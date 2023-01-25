@@ -101,10 +101,10 @@ mlrun.set_environment("<remote-service-url>", access_key="xyz", username="joe")
 
     The `set` command can work with the following parameters:
     `-a` for setting the url (local or remote) for MLRun API 
-    `-p` for setting the artifact path (Optional)
+    `-p` for setting the artifact path (optional)
     `-u` for setting the username (for remote access)
     `-k` for setting the access key (for remote access)
-    `-e` for setting the environment variables (Optional)
+    `-e` for setting the environment variables (optional)
    
     Examples:
         # read the default config
@@ -114,7 +114,7 @@ mlrun.set_environment("<remote-service-url>", access_key="xyz", username="joe")
         # set configuration and write it to the default env file (~/.mlrun.env)
         `mlrun config set -a http://localhost:8080 -u joe -k mykey -e AWS_ACCESS_KEY_ID=<key-id>`
 
-   Alternatively, you can load the configuration and credential environmental variables from your own environment file as explained below:
+   Alternatively (not recommended), you can load the configuration and credential environmental variables from your own environment file as explained below:
 
 ### Load the configuration and credential environmental variables from file
 
