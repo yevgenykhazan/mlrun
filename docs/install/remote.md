@@ -104,7 +104,7 @@ The `set` command can work with the following parameters:
 Example:
  `mlrun config set -a http://localhost:8080 -u joe -k mykey -e AWS_ACCESS_KEY_ID=<key-id>`
 
-Alternatively (**not recommended**) you can load the configuration and credential environmental variables from your own environment file as explained below:
+Alternatively (**not recommended**), you can load the configuration and credential environmental variables from your own environment file as explained below:
 
 ### Load the configuration and credential environmental variables from file
 
