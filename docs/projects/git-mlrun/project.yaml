@@ -3,11 +3,6 @@ metadata:
   name: new-git-project
 spec:
   functions:
-  - url: src/fetch_data.py
-    name: fetch_data
-    kind: job
-    image: mlrun/mlrun
-    handler: fetch_data
   - url: src/trainer.py
     name: trainer
     kind: job
@@ -38,6 +33,6 @@ spec:
       model_file: model_iris.pkl
     status:
       state: created
-  source: git://github.com/yevgenykhazan/mlrun.git#refs/heads/mlrun-git
-  origin_url: git://github.com/yevgenykhazan/mlrun.git#refs/heads/mlrun-git
+  source: git://github.com/yevgenykhazan/mlrun.git#refs/heads/master
+  origin_url: git://github.com/yevgenykhazan/mlrun.git#git-mlrun
   desired_state: online

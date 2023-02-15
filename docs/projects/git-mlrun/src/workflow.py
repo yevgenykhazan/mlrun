@@ -2,19 +2,13 @@
 from kfp import dsl
 import mlrun
 
+
 # Create a Kubeflow Pipelines pipeline
 @dsl.pipeline(name="iris-git-demo")
 def pipeline(dataset_uri,model_name="iris_model"):
-    # Run the ingestion function with the new image and params
-    ingest = mlrun.run_function(inputs={'dataset':dataset_uri},
-        function="fetch_data",
-        outputs=["dataset"], 
-    )
-
-    # Train a model using the trainer function
     train = mlrun.run_function(
         "trainer",
-        inputs={"dataset": ingest.outputs["dataset"]},
+        inputs={"dataset": dataset_uri},
         params = {
             "model_class": "sklearn.ensemble.RandomForestClassifier",
             "train_test_split_size": 0.2,
