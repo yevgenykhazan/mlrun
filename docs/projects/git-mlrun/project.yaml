@@ -5,6 +5,6 @@ spec:
   functions: []
   workflows: []
   artifacts: []
-  source: git://github.com/yevgenykhazan/mlrun.git#refs/heads/master
-  origin_url: git://github.com/yevgenykhazan/mlrun.git#refs/heads/master
+  source: git://github.com/mlrun/mlrun.git#refs/heads/master
+  origin_url: git://github.com/mlrun/mlrun.git#refs/heads/master
   desired_state: online
