@@ -3,7 +3,7 @@
 # Monitor and alert
 
 ```{note}
-Monitoring is supported by Iguazio's streaming technology, and open-source integration with Kafka.
+Monitoring required at the moment Iguazio's streaming technology. Open-source integration with Kafka is under development.
 ```
 
 ```{note}

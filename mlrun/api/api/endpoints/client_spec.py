@@ -12,9 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import typing
-
-from fastapi import APIRouter, Header
+from fastapi import APIRouter
 
 import mlrun.api.crud
 import mlrun.api.schemas
@@ -26,14 +24,7 @@ router = APIRouter()
     "/client-spec",
     response_model=mlrun.api.schemas.ClientSpec,
 )
-def get_client_spec(
-    client_version: typing.Optional[str] = Header(
-        None, alias=mlrun.api.schemas.HeaderNames.client_version
-    ),
-    client_python_version: typing.Optional[str] = Header(
-        None, alias=mlrun.api.schemas.HeaderNames.python_version
-    ),
-):
-    return mlrun.api.crud.ClientSpec().get_client_spec(
-        client_version=client_version, client_python_version=client_python_version
-    )
+def get_client_spec():
+
+    # TODO: cache me
+    return mlrun.api.crud.ClientSpec().get_client_spec()

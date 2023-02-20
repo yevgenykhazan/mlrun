@@ -96,7 +96,6 @@ async def store_function(
         project,
         tag=tag,
         versioned=versioned,
-        auth_info=auth_info,
     )
     return {
         "hash_key": hash_key,

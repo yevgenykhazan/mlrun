@@ -280,7 +280,7 @@ class Credentials(ModelObj):
 
     def __init__(
         self,
-        access_key: str = None,
+        access_key=None,
     ):
         self.access_key = access_key
 
