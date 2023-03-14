@@ -3,16 +3,16 @@ metadata:
   name: ci-cd-load
 spec:
   functions:
-  - url: ./docs/projects/load/project_context/docs/projects/git-mlrun/src/trainer.py
+  - url: docs/projects/load/project_context/docs/projects/git-mlrun/src/trainer.py
     name: trainer
     kind: job
     image: mlrun/mlrun
     handler: train
-  - url: ./docs/projects/load/project_context/docs/projects/git-mlrun/serving.yaml
+  - url: docs/projects/load/project_context/docs/projects/git-mlrun/serving.yaml
     name: serving
     kind: serving
   workflows:
-  - path: ./docs/projects/load/project_context/docs/projects/git-mlrun/src/workflow.py
+  - path: docs/projects/load/project_context/docs/projects/git-mlrun/src/workflow.py
     name: main
   artifacts:
   - kind: dataset
