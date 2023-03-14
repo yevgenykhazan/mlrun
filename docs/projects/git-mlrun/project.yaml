@@ -1,18 +1,18 @@
 kind: project
 metadata:
-  name: new-git-project
+  name: ci-cd-load
 spec:
   functions:
-  - url: src/trainer.py
+  - url: ./docs/projects/load/project_context/docs/projects/git-mlrun/src/trainer.py
     name: trainer
     kind: job
     image: mlrun/mlrun
     handler: train
-  - url: serving.yaml
+  - url: ./docs/projects/load/project_context/docs/projects/git-mlrun/serving.yaml
     name: serving
     kind: serving
   workflows:
-  - path: ./src/workflow.py
+  - path: ./docs/projects/load/project_context/docs/projects/git-mlrun/src/workflow.py
     name: main
   artifacts:
   - kind: dataset
@@ -33,6 +33,8 @@ spec:
       model_file: model_iris.pkl
     status:
       state: created
-  source: git://github.com/mlrun/mlrun.git#refs/heads/master
-  origin_url: git://github.com/mlrun/mlrun.git#refs/heads/master
+  source: git://github.com/yevgenykhazan/mlrun.git#refs/heads/git-mlrun
+  subpath: ./docs/projects/git-mlrun
+  origin_url: git://github.com/yevgenykhazan/mlrun.git#refs/heads/git-mlrun
   desired_state: online
+
