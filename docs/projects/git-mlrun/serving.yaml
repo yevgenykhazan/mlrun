@@ -1,35 +1,40 @@
-kind: serving
+kind: project
 metadata:
-  name: serving
-  hash: bfbecc5305a46bbd76481c0be98fd7e9b1adbd23
-  project: new-git-project
-  categories: []
+  name: ci-cd-load
 spec:
-  command: ''
-  args: []
-  image: mlrun/mlrun
-  build:
-    commands: []
-  description: ''
-  disable_auto_mount: false
-  env: []
-  preemption_mode: prevent
-  min_replicas: 1
-  max_replicas: 4
-  source: ''
-  function_kind: serving_v2
-  graph:
-    kind: router
-    after: []
-    routes:
-      iris_model:
-        kind: task
-        class_name: mlrun.frameworks.sklearn.SklearnModelServer
-        class_args:
-          model_path: store://artifacts/new-git-project/model_iris:c83e248868b24cd89307ee942c6ad09b
-        after: []
-  secret_sources: []
-  affinity: null
-  tolerations: null
-  security_context: {}
-verbose: false
+  functions:
+  - url: ./docs/projects/load/project_context/docs/projects/git-mlrun/src/trainer.py
+    name: trainer
+    kind: job
+    image: mlrun/mlrun
+    handler: train
+  - url: ./docs/projects/load/project_context/docs/projects/git-mlrun/serving.yaml
+    name: serving
+    kind: serving
+  workflows:
+  - path: ./docs/projects/load/project_context/docs/projects/git-mlrun/src/workflow.py
+    name: main
+  artifacts:
+  - kind: dataset
+    metadata:
+      project: new-git-project
+      key: data
+    spec:
+      target_path: https://s3.wasabisys.com/iguazio/data/iris/iris.data.raw.csv
+      format: ''
+    status:
+      state: created
+  - kind: model
+    metadata:
+      project: new-git-project
+      key: model
+    spec:
+      target_path: s3://mlrun/projects/new-git-project/artifacts/trainer-train/0/model/
+      model_file: model_iris.pkl
+    status:
+      state: created
+  source: git://github.com/yevgenykhazan/mlrun.git#refs/heads/git-mlrun
+  subpath: ./docs/projects/git-mlrun
+  origin_url: git://github.com/yevgenykhazan/mlrun.git#refs/heads/git-mlrun
+  desired_state: online
+
