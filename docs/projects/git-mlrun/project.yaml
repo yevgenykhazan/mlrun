@@ -3,7 +3,7 @@ metadata:
   name: ci-cd-load
 spec:
   functions:
-  - url: src/trainer.py
+  - url: ./src/trainer.py
     name: trainer
     kind: job
     image: mlrun/mlrun
@@ -12,7 +12,7 @@ spec:
     name: serving
     kind: serving
   workflows:
-  - path: src/workflow.py
+  - path: ./src/workflow.py
     name: main
   artifacts:
   - kind: dataset
